@@ -3,7 +3,7 @@
 
 main :: IO ()
 main = do
-  print =<<  solve2 <$> lines <$> readFile "inp3.txt"
+  print =<<  solve1 <$> lines <$> readFile "inp3.txt"
 
 
 solve1 :: [String] -> Int
@@ -25,7 +25,7 @@ pather g h l i d r | i >= h = []
 h = length
 l = length . head
 g = concat
-f = length . filter isTree
+f = length . filter (=='#')
 
-isTree = \x -> if x == '#' then True else False
+
 
