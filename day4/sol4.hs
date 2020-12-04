@@ -38,7 +38,7 @@ validPartial = \case
  where
    r       = read . takeWhile isDigit
    val     = and  . map valChar
-   valChar = flip elem ['a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9']
+   valChar = flip elem "abcdefg0123456789"
    valEye  = flip elem ["amb","blu","brn","gry","grn","hzl","oth"]
 
 

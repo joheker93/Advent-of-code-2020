@@ -3,7 +3,9 @@
 
 main :: IO ()
 main = do
-  print =<<  solve1 <$> lines <$> readFile "inp3.txt"
+  let f f g i = (f i, g i)
+  print =<< f solve1 solve2 <$> lines <$> readFile "inp3.txt"
+
 
 
 solve1 :: [String] -> Int
@@ -15,6 +17,7 @@ solve2 inp = let g_n = [j | (i,j) <- zip [0..] inp, even i]
                  p_app2 = (f .) . (pather (g g_n) (h g_n) (l inp) 0)
                  ps = [p_app 1 1,p_app 1 3,p_app 1 5,p_app 1 7, p_app2 1 1]
                  in foldl1 (*) ps
+
 
 pather g h l i d r | i >= h = []
                    | otherwise = g !! (pos i l d r) : pather g h l (i+1) d r
