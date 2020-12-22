@@ -1,5 +1,4 @@
 import Data.List
-
 import Control.Lens
 import Data.Tuple (swap)
 
@@ -13,8 +12,8 @@ main = do
                . map swap
                . map (pretty . foldVals)
                . sort
-                .map sort
-                . (map <$> flip countMatches <*> id)
+               . map sort
+               . (map <$> flip countMatches <*> id)
 
   print (solve1 pars)
 
@@ -33,13 +32,13 @@ rot = transpose . reverse
 allRots = concatMap (^..each) . ((:) <$> ((,,,,,,,) <$> r1 <*> r2 <*> r3 <*> r4 <*> r5 <*> r6 <*> r7 <*> r8) <*> const [])
   where
     r1 = get
-    r2 = get . rot
-    r3 = get . rot . rot
-    r4 = get . rot . rot . rot
+    r2 = r1  . rot
+    r3 = r2  . rot
+    r4 = r3  . rot
     r5 = get . flipMat
-    r6 = r2 . flipMat
-    r7 = r3 . flipMat
-    r8 = r4 . flipMat
+    r6 = r2  . flipMat
+    r7 = r3  . flipMat
+    r8 = r4  . flipMat
     get = flip (!!) 0 
 
 
